@@ -1,0 +1,11 @@
+Options +FollowSymLinks
+RewriteEngine On
+
+# Remove .php extension
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([^/]+)/?$ $1.php [L]
+
+# Redirect /index.php to /
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
+RewriteRule ^index\.php$ / [R=301,L]
